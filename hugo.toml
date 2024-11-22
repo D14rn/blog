@@ -1,0 +1,5 @@
+baseURL = "https://d14rn.github.io/"
+languageCode = "en-us"
+title = "D14rn's blog"
+theme = "ananke"
+github = "https://github.com/D14rn"

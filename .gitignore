@@ -1,0 +1,16 @@
+# Generated Hugo directories
+/public/
+/resources/_gen/
+
+# Potential binaries
+hugo.exe
+hugo.linux
+hugo.darwin
+
+# macOS
+.DS_Store
+
+# Just in case
+node_modules
+dist
+tmp
