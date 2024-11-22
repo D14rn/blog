@@ -2,4 +2,11 @@ baseURL = "https://d14rn.github.io/"
 languageCode = "en-us"
 title = "D14rn's blog"
 theme = "ananke"
-github = "https://github.com/D14rn"
+
+[params.ananke.social.follow]
+networks = [
+  "github"
+]
+
+[params.ananke.social.github]
+username = "D14rn"
