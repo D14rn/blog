@@ -1,0 +1,11 @@
+read_more_copy = "Read more"
+
+[ananke.social.follow]
+new_window_icon = true
+networks = [
+  "github"
+]
+
+[ananke.social.github]
+username = "D14rn"
+profileLink = "https://github.com/D14rn/blog"
