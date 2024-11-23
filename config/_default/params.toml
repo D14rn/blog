@@ -1,4 +1,5 @@
 read_more_copy = "Read more"
+show_reading_time = true
 
 [ananke.social.follow]
 new_window_icon = true
