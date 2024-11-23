@@ -9,6 +9,5 @@ title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 
 ## Quick references
 
-
 ### Links
 -
