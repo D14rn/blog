@@ -43,7 +43,7 @@ This one is useful whenever you realize you made a (small) mistake after creatin
 
 #### Changing the commit message/description
 ```bash
-# opens the editor (you can modify the message and description)
+# opens the editor (recommended if you want to add a description or modify it)
 git commit --amend
 # doesn't
 git commit --amend -m "your new commit message"
@@ -84,9 +84,20 @@ git reset --hard HEAD^
 ```
 Note: you can also use `HEAD^1` with the other modes, as it's essentially a reference to a commit.
 
-### git reset --mixed (default)
+#### git reset --mixed (default)
 This is the default `git reset` mode. It will move the current branch pointer to the specified commit and reset the staging area, but it will keep the working directory intact.
 You can use this mode if you made a commit by mistake and want to go back while also keeping your current changes.
 
-### git reset --soft
+#### git reset --soft
 This is the "safest" `git reset` option, it will only move the current branch pointer, keeping the staging area and working directory untouched.
+
+### git push --set-upstream
+Also usable as `git push -u`, this command "pushes" a local branch to a remote repository.
+
+```bash
+# We make the local branch available to the repository at 'origin'
+# in the remote branch 'feature_branch'
+git push -u origin feature_branch
+```
+
+### 
