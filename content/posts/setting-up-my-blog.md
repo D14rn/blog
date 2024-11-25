@@ -40,6 +40,9 @@ Anyways, I'm not exactly sure what I wanna do with this blog, but it was a fun e
 
 ### Commands
 ```bash
+# Adding the submodule repository
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+
 # Create a new post
 hugo new posts/<post-name>.md
 hugo new content posts/<post-name>.md
@@ -47,4 +50,7 @@ hugo new content posts/<post-name>.md
 # Start live server with drafts enabled
 hugo server -D
 hugo server --buildDrafts
+
+# After cloning a repository with a submodule
+git submodule update --init --recursive
 ```
