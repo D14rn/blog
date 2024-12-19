@@ -1,6 +1,6 @@
 +++
 date = '2024-11-24T17:10:16+01:00'
-draft = true
+draft = false
 title = 'Quick Git Commands'
 +++
 
@@ -99,5 +99,80 @@ Also usable as `git push -u`, this command "pushes" a local branch to a remote r
 # in the remote branch 'feature_branch'
 git push -u origin feature_branch
 ```
+### git rebase
+#### git rebase <branch_name>
+With this command, you can "replay" the changes from one branch X onto another branch Y such that it looks like Y started from X. It takes the commits from branch Y and places them on top of branch X, effectively rewriting the commit history to create a seemingly linear sequence of changes. This makes it look like the changes in branch Y were made directly on the latest state of branch X.
 
-### 
+```bash
+# On branch 'feature-impl'
+# Some changes were made to 'main' while we were working on 'feature-impl'
+# We want to avoid rewriting the history of main so we rebase
+git rebase main
+```
+
+#### git rebase -i <commit_hash>
+With this command, you can "fixup" your commit history, for example by modifying commit messages, "squashing commits" (or "keeping" them intact) ([see all options here](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)).
+
+It opens the editor so that you can choose what to do with each commit (ex: pick, fixup, squash).
+
+Note: the specified commit refers to the parent of the last commit you want to modify.
+```bash
+git rebase -i HEAD^3    # Four commits ago
+```
+```
+pick f7f3f6d Change my name a bit
+pick 310154e Update README formatting and add blame
+pick a5f4a0d Add cat-file
+
+# Rebase 710f0f8..a5f4a0d onto 710f0f8
+...
+```
+
+### git remote prune origin
+`git remote prune origin` removes references to branches that no longer exist in the remote repository from your local repository. This command is useful for cleaning up remote-tracking branches, making sure that your local repository is up-to-date with the remote.
+
+**Before pruning**
+```bash
+git branch -a
+# dev
+# feat-veryRealBranch
+# feat-veryRealFeature
+# * main
+# remotes/origin/HEAD -> origin/main
+# remotes/origin/dev
+# remotes/origin/feat-veryRealBranch
+# remotes/origin/feat-veryRealFeature
+# remotes/origin/main
+```
+
+**We prune the remote branches**
+```bash
+git remote prune origin
+# Pruning origin
+# URL: https://github.com/d14rn/totally-real-repo.git
+# * [pruned] origin/feat-veryRealBranch
+# * [pruned] origin/feat-veryRealFeature
+```
+
+**After pruning**
+```bash
+git branch -a
+# dev
+# feat-veryRealBranch
+# feat-veryRealFeature
+# * main
+# remotes/origin/HEAD -> origin/main
+# remotes/origin/dev
+# remotes/origin/main
+```
+
+Unfortunately, I don't know of an equivalent for "stale" local branches, the most efficient method that I know of is manually deleting multiple branches at once with:
+```bash
+git branch -d feat-veryRealBranch feat-veryRealFeature
+```
+
+## Quick references
+### Links
+- [Rewriting Git history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
+- [git reset](https://git-scm.com/docs/git-reset)
+- [git rebase](https://git-scm.com/docs/git-rebase)
